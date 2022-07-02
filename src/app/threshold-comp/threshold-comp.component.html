@@ -1,0 +1,108 @@
+<div class="showOverlay" *ngIf="overLayshow"></div>
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Configurations</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Thresholds</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-sm-12 tree-container">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h4 class="card-title">Thresholds</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-2">
+                            <div class="main-canvas ">
+                                <div *ngFor="let item of dataPicked; index as index" class="d-flex looping">
+                                    <div [style.backgroundColor]="item.color" class="invert">
+                                        <h4 class="h4">{{item.name}}</h4>
+                                    </div>
+
+                                    <div class="flex-grow-1">
+                                        <div class="del-bottom" *ngFor="let item2 of item.Main; index as index2">
+                                            <div class="accordion" id="accordionExample">
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingOne">
+                                                        <button class="accordion-button" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                            <span class="name-main"> {{item2.name}}</span>
+                                                            <img class="delBtn1" (click)=" deleteMain(index,index2)"
+                                                                src="../..//assets/images/delete-icon.svg">
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseOne" class="accordion-collapse collapse show"
+                                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                            <div class="flex-grow-1">
+                                                                <div *ngFor="let item3 of item2.Sub;index as index3">
+                                                                    <span>{{item3.name}}</span>
+                                                                    <img class="delBtn1"
+                                                                        (click)=" deleteSubmain(index, index2, index3)"
+                                                                        src="../..//assets/images/delete-icon.svg">
+
+                                                                </div>
+                                                                <h5 (click)="subThresholdmodal(item.id, item2.id,index)"
+                                                                    class="add-force-area px-2"> <i
+                                                                        class="fas fa-plus mr-1"></i>Add Sub
+                                                                    Threshold</h5>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h5 (click)="mainThresholdmodal(item.id)" class="add-force-area px-2"> <i
+                                                    class="fas fa-plus mr-1"></i>Add main
+                                                threshold</h5>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <!-- <div *ngFor="let item2 of thresholdData">{{item2.name}}</div> -->
+
+
+                                    <!-- <button class="delBtn" (click)=" deleteRow(index)">delete</button> -->
+                                    <img class="delBtn" (click)=" deleteRow(index)"
+                                        src="../..//assets/images/delete-icon.svg">
+                                </div>
+                                <div>
+                                    <a class="add-force-area tree-add-action p-3" (click)="showPopup()">
+                                        <i class="fas fa-plus mr-1"></i>
+                                        Add New Category
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-category-comp class="catagoryModel" *ngIf="showPopupcategory" (closeModel)="closeModel($event)"
+    (sendFormdata)="sendFormdata($event)">
+</app-category-comp>
+<app-main-threshold class="mainthresHold" *ngIf="showMainmodal" (closeMainmodel)="closeMainmodel($event)"
+    (sendMainmodal)="sendMainmodal($event)">
+</app-main-threshold>
+
+<app-sub-threshodl class="subthresHold" *ngIf="showSubthresHold" (closeMainsubmodel)="closeMainsubmodel($event)"
+    (sendMainsubmodal)="sendMainsubmodal($event)">
+</app-sub-threshodl>

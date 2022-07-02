@@ -1,0 +1,134 @@
+<div class="modal-dialog modal-dialog-slideout modal-md" role="document">
+    <form [formGroup]="catrgoryform" (ngSubmit)="collectData()">
+        <input type="hidden" formControlName="id">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Category</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-container light-bg">
+                            <div class="row">
+                                <div class="col-sm-12 mb-2">
+                                    <div class="options-group">
+                                        <div class="form-group">
+                                            <div class="row d-flex">
+                                                <div class="col-sm-4">
+                                                    <label>Language</label>
+                                                    <select class="form-control">
+                                                        <option>English</option>
+                                                        <option>Arabic</option>
+                                                        <option>French</option>
+                                                        <option>Chinese</option>
+                                                    </select>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <label>
+                                                        Category name
+                                                    </label>
+                                                    <input style="height: 36px;" type="text" placeholder="Name"
+                                                        id="forceTitleInput" formControlName="name"
+                                                        class="form-control">
+                                                </div>
+                                                <!-- <div class="hidden">
+                                                    <span class="action-icon remove-icon ml-2 lang-action">
+                                                        <img src="../../../assets/images/delete-icon.svg" />
+                                                    </span>
+                                                </div> -->
+                                                <div class="col-sm-12 mt-2">
+                                                    <label for="exampleFormControlTextarea1">
+                                                        Description
+                                                    </label>
+                                                    <textarea class="form-control text-area"
+                                                        placeholder="Enter Description" rows="2"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="btn btn-default addNewLang">
+                                            <img style="width:13px;" class="mr-1" src="assets/images/add-white.svg">
+                                            Add Language
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-container mt-3">
+                            <div class="form-group">
+                                <label>
+                                    Color
+                                </label>
+                                <div class="row all-colors">
+                                    <div class="col-sm-6 col-md-3" *ngFor="let item of colorPicker">
+                                        <div class="single-color-box {{item.class}}" [ngClass]="{'active':item.active}"
+                                            (click)="colorObject(item)">
+                                            <!-- <input style="display: none;" formControlName='color' > -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-container mt-3">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label>
+                                Responsibilities
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-7">
+                                <select style="border-radius: 25px;height:25px"
+                                    style="border-radius:17px;height:32px;background:white;padding: 5px;" name="select2"
+                                    class="multiple multi w-100">
+                                    <option value="1" data-left="assets/images/ingi.png">Mohammad Abdullah</option>
+                                    <option value="2" data-left="assets/images/runa.png">Mohammad Abdullah</option>
+                                    <option value="3" data-left="assets/images/jogvan.png">Mohammad Abdullah
+                                    </option>
+                                    <option value="4" data-left="assets/images/noimage.png">Mohammad Abdullah
+                                    </option>
+                                    <option value="5" data-left="assets/images/noimage.png">Mohammad Abdullah
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-md-3">
+                                <select class="form-control">
+                                    <option>Guest</option>
+                                    <option>Leader</option>
+                                    <option>Editor</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-md-2">
+                                <span class="remove-icon ml-2 action-icon">
+                                    <img style="width: 28px" src="assets/images/delete-icon.svg" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn btn-default icon-btn pt-1 pb-1 pl-2 pr-3 mt-1 addNewGuest">
+                        <img class="mr-1" src="assets/images/add-white.svg">
+                        Add Responsibilities
+                    </a>
+                </div>
+            </div>
+            <div class="modal-footer p-2">
+                <button (click)="closePopup()" data-dismiss="modal" aria-label="Close" id="closeBtn" type="button"
+                    class="btn icon-btn btn-secondary float-right ml-3 mt-2 btn-width">
+                    Cancel
+                </button>
+                <button style="background-color:#4CAAAA;color:white;width:73px" data-dismiss="modal" aria-label="Close"
+                    type="submit" id="saveForceChanges" class="btn icon-btn search-btn mt-2 float-right btn-width">
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
